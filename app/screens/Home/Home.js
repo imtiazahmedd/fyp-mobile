@@ -2,13 +2,20 @@ import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles'
+import {connect} from "react-redux";
+import Signup from "../Register/Signup";
 
 class Home extends Component{
 
     static navigationOptions = {
-        header : null
+        drawerLabel: 'Signup',
+        drawerIcon: ({ tintColor }) => (
+            <Image
+                source={require('./../../images/logout.png')}
+                style={[styles.icon, {tintColor: tintColor}]}
+            />
+        ),
     };
-
 
     constructor(props){
         super(props);
@@ -18,6 +25,7 @@ class Home extends Component{
     }
 
     render(){
+        console.log(this.props.user.user,'sereeee**************');
         return(
             <View style={Styles.container}>
                 <View style={Styles.header}>
@@ -31,4 +39,12 @@ class Home extends Component{
     }
 }
 
-export default Home
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.auth.user,
+    };
+};
+export default connect(
+    mapStateToProps
+)(Home)

@@ -16,10 +16,11 @@ const db = firebase.database();
 const register = ({firstName, lastName, email, password}) => {
     return new Promise((resolve, reject) => {
             firebase.auth().createUserWithEmailAndPassword(email, password).then((res) => {
-                    db.ref('users/').push({
+                    db.ref('users/').child(res.uid).set({
                         first_name: firstName,
                         last_name: lastName,
                         email: email.toLowerCase(),
+                        id : res.uid
                     }).then(()=>{
                         resolve(res);
                     })
@@ -44,6 +45,7 @@ const login = ({email, password}) => {
             });
     })
 };
+
 
 
 

@@ -3,8 +3,10 @@ import { createStackNavigator, DrawerNavigator } from 'react-navigation';
 import Home from '../screens/Home/Home';
 import Signup from '../screens/Register/Signup'
 import Login from '../screens/Login/Login'
+import { connect } from 'react-redux'
+import {signOut} from './../configs/Firebase'
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput,ScrollView, StyleSheet,AsyncStorage} from 'react-native'
-
+const {width, height} = Dimensions.get('window');
 class DrawerDisplay extends Component{
     static navigationOptions = {
         header : null
@@ -12,13 +14,18 @@ class DrawerDisplay extends Component{
     constructor(props){
         super(props);
         this.state = {
-
+            userId: ''
         }
     }
 
 
     componentWillMount(){
+        console.log(this.props.user.user,'user****************************');
 
+        // const currentUser = firebase.auth().currentUser;
+        // console.log(currentUser,'&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        // const userId = currentUser.uid;
+        // this.setState({userId: userId})
     }
 
 
@@ -93,55 +100,49 @@ class DrawerDisplay extends Component{
 
 
 
-// const ContentComponent = connect(mapStateToProps)(DrawerDisplay);
 
-// const DrawerNavigatorConfig =  {
-//     drawerWidth: 280,
-//     drawerPosition: 'Left'
-//     // contentComponent: ContentComponent
-//     // props =>
-//     ,
-//
-//     contentOptions: {
-//         activeBackgroundColor: 'white',
-//         activeTintColor: 'white',
-//         inactiveTintColor: '#032456',
-//         inactiveBackgroundColor: 'transparent'
-//     }
-//
-// };
+const mapStateToProps = (state) => {
+    return {
+        user: state.auth.user,
+    };
+};
 
-// const DrawerNav = DrawerNavigator({
+const ContentComponent = connect(mapStateToProps)(DrawerDisplay);
 
-    // Department: {
-    //     screen: Department,
-    //
-    // },
-    // NotificationsScreen: {
-    //     screen: NotificationsScreen,
-    //     navigationOptions: {
-    //         header: null,
-    //         drawer: () => ({
-    //             label: 'NotificationsScreen',
-    //         })
-    //     }
-    //
-    // },
-    // AddDepartment: {
-    //     screen: AddDepartment,
-    //     navigationOptions: {
-    //         drawer: () => ({
-    //             label: 'AddDepartment',
-    //         })
-    //     }
-    // },
+const DrawerNavigatorConfig =  {
+    drawerWidth: 280,
+    drawerPosition: 'Left',
+    contentComponent: ContentComponent
+    // props =>
+    ,
 
-// }, DrawerNavigatorConfig);
+    contentOptions: {
+        activeBackgroundColor: 'white',
+        activeTintColor: 'white',
+        inactiveTintColor: '#032456',
+        inactiveBackgroundColor: 'transparent'
+    }
+
+};
+
+const DrawerNav = DrawerNavigator({
+    Home: {
+        screen: Home
+    },
+    Signup: {
+        screen: Signup
+    },
+
+
+
+
+}, DrawerNavigatorConfig);
 
 
 
 const Route = createStackNavigator({
     Login : {screen : Login},
+    DrawerNav: {screen: DrawerNav},
     Signup: { screen: Signup },
     Home: { screen: Home},
 

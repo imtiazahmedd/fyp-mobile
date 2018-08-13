@@ -3,9 +3,11 @@ import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, Style
 import Signup from "../Register/Signup";
 import {login} from "../../configs/Firebase";
 const {width, height} = Dimensions.get('window');
+import {onLogin} from '../../redux/auth/action'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Styles from './Styles'
-
-export default class Login extends Component{
+ class Login extends Component{
 
     static navigationOptions = {
         header : null
@@ -20,6 +22,10 @@ export default class Login extends Component{
             loader : false,
         }
     }
+
+     componentWillMount(){
+         this.getUsers();
+     }
 
 
     async getUsers(){
@@ -44,15 +50,16 @@ export default class Login extends Component{
                 let userr = JSON.stringify(user);
                 await AsyncStorage.setItem('user', userr);
                 this.setState({email : '',password : '', loader: false});
-                    this.props.navigation.navigate("Home", {screen: "Home"});
-
+                this.props.navigation.navigate("DrawerNav", {screen: "DrawerNav"});
+                console.log(res,'res*****************************');
+                this.props.onLogin(res);
             }else{
                 Alert.alert('','Enter email and password')
             }
 
         } catch(e) {
             this.setState({loader: false});
-            Alert.alert('', e.error)
+            Alert.alert('', e.Error)
         }
     }
 
@@ -101,3 +108,18 @@ export default class Login extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.auth.user,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        onLogin: onLogin
+    }, dispatch)
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login)
