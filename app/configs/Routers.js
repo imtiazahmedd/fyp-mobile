@@ -3,6 +3,9 @@ import { createStackNavigator, DrawerNavigator } from 'react-navigation';
 import Home from '../screens/Home/Home';
 import Signup from '../screens/Register/Signup'
 import Login from '../screens/Login/Login'
+import Civil from '../screens/Civil/Civil'
+import Criminal from '../screens/Criminal/Criminal'
+import Profile from '../screens/Profile/Profile'
 import { connect } from 'react-redux'
 import {signOut} from './../configs/Firebase'
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput,ScrollView, StyleSheet,AsyncStorage} from 'react-native'
@@ -55,32 +58,32 @@ class DrawerDisplay extends Component{
                     </View>
                 </TouchableOpacity>
 
-                 <TouchableOpacity>
+                 <TouchableOpacity onPress={() => this.props.navigation.navigate("Civil", {screen: "Civil"})}>
                     <View style={{height: height*0.1,borderWidth:0.5,borderBottomColor:'grey',borderTopColor:'transparent',borderLeftColor:'transparent',borderRightColor:'transparent'}}>
                         <View style={{flex: 1, flexDirection: 'row'}}>
                             <View style={{width: width*0.15,alignItems:'center',justifyContent:'center'}}>
-                                {/*<Image source={require('../images/adddepartment.png')} style={{width:25,height:25}}/>*/}
+                                <Image source={require('../images/civil.png')} style={{width:25,height:25}}/>
                             </View>
                             <View style={{width: width*0.5,alignItems:'center',justifyContent:'center'}}>
-                                <Text style={{fontSize:15,fontFamily: 'gt-walsheim-regular'}}>Add Departments</Text>
+                                <Text style={{fontSize:15,fontFamily: 'gt-walsheim-regular'}}>Civil laws</Text>
                             </View>
                         </View>
                     </View>
                 </TouchableOpacity>
-               <TouchableOpacity>
+               <TouchableOpacity onPress={() => this.props.navigation.navigate("Criminal", {screen: "Criminal"})}>
                     <View style={{height: height*0.1,borderWidth:0.5,borderBottomColor:'grey',borderTopColor:'transparent',borderLeftColor:'transparent',borderRightColor:'transparent'}}>
                         <View style={{flex: 1, flexDirection: 'row'}}>
                             <View style={{width: width*0.15,alignItems:'center',justifyContent:'center'}}>
-                                <Image source={require('../images/addusers.png')} style={{width:25,height:25}}/>
+                                <Image source={require('../images/criminal.png')} style={{width:25,height:25}}/>
                             </View>
                             <View style={{width: width*0.5,alignItems:'center',justifyContent:'center'}}>
-                                <Text style={{fontSize:15,fontFamily: 'gt-walsheim-regular'}}>Add Users</Text>
+                                <Text style={{fontSize:15,fontFamily: 'gt-walsheim-regular'}}>Criminal laws</Text>
                             </View>
                         </View>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{this.signOut()}}>
+                <TouchableOpacity onPress={()=>{}}>
                     <View style={{height: height*0.1,borderWidth:0.5,borderBottomColor:'grey',borderTopColor:'transparent',borderLeftColor:'transparent',borderRightColor:'transparent'}}>
                         <View style={{flex: 1, flexDirection: 'row'}}>
                             <View style={{width: width*0.15,alignItems:'center',justifyContent:'center'}}>
@@ -128,14 +131,7 @@ const DrawerNavigatorConfig =  {
 const DrawerNav = DrawerNavigator({
     Home: {
         screen: Home
-    },
-    Signup: {
-        screen: Signup
-    },
-
-
-
-
+    }
 }, DrawerNavigatorConfig);
 
 
@@ -145,7 +141,9 @@ const Route = createStackNavigator({
     DrawerNav: {screen: DrawerNav},
     Signup: { screen: Signup },
     Home: { screen: Home},
-
+    Criminal: { screen: Criminal},
+    Civil: { screen: Civil},
+    Profile: {screen: Profile}
 }, {
     headerMode: 'none'
 });
