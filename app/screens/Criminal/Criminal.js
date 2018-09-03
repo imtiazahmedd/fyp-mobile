@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
+import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
-import Styles from './Styles'
+import Styles from './Styles';
+import {getCriminal} from '../../configs/Firebase'
 
 class Criminal extends Component{
 
@@ -13,11 +14,21 @@ class Criminal extends Component{
     constructor(props){
         super(props);
         this.state={
-
+            criminalArr : []
         }
     }
 
+    componentWillMount(){
+        this.getCriminalLaws()
+    }
+    async getCriminalLaws(){
+        let res = await getCriminal();
+        this.setState({criminalArr : res})
+    }
+
+
     render(){
+        console.log(this.state.criminalArr,'crimiiiiiiiiiiiiiiiiiii')
         return(
             <View style={Styles.main}>
                 <View style={Styles.header}>
@@ -29,6 +40,15 @@ class Criminal extends Component{
                     <View style={Styles.headingDiv}>
                         <Text style={Styles.headingText}>Criminal laws</Text>
                     </View>
+                </View>
+                <View>
+                    <ScrollView>
+                        {this.state.criminalArr.map((el)=>{
+                            return (
+                                <Text>{el.offence}</Text>
+                            )
+                        })}
+                    </ScrollView>
                 </View>
             </View>
         )

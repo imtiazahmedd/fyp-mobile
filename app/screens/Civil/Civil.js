@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
+import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
-import Styles from './Styles'
+import Styles from './Styles';
+import {getCivil} from '../../configs/Firebase'
 
 class Civil extends Component{
 
@@ -13,9 +14,18 @@ class Civil extends Component{
     constructor(props){
         super(props);
         this.state={
-
+            civilArr : []
         }
     }
+
+    componentWillMount(){
+        this.getCivilLaws()
+    }
+    async getCivilLaws(){
+        let res = await getCivil();
+        this.setState({civilArr : res})
+    }
+
 
     render(){
         return(
@@ -29,6 +39,15 @@ class Civil extends Component{
                     <View style={Styles.headingDiv}>
                         <Text style={Styles.headingText}>Civil laws</Text>
                     </View>
+                </View>
+                <View>
+                    <ScrollView>
+                    {this.state.civilArr.map((el)=>{
+                        return (
+                            <Text>{el.offences}</Text>
+                        )
+                    })}
+                        </ScrollView>
                 </View>
             </View>
                 )

@@ -6,6 +6,7 @@ import Login from '../screens/Login/Login'
 import Civil from '../screens/Civil/Civil'
 import Criminal from '../screens/Criminal/Criminal'
 import Profile from '../screens/Profile/Profile'
+import UpdatePassword from '../screens/Profile/UpdatePassword'
 import { connect } from 'react-redux'
 import {signOut} from './../configs/Firebase'
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput,ScrollView, StyleSheet,AsyncStorage} from 'react-native'
@@ -23,7 +24,6 @@ class DrawerDisplay extends Component{
 
 
     componentWillMount(){
-        console.log(this.props.user.user,'user****************************');
 
         // const currentUser = firebase.auth().currentUser;
         // console.log(currentUser,'&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
@@ -143,7 +143,8 @@ const Route = createStackNavigator({
     Home: { screen: Home},
     Criminal: { screen: Criminal},
     Civil: { screen: Civil},
-    Profile: {screen: Profile}
+    Profile: {screen: Profile},
+    UpdatePassword: {screen: UpdatePassword}
 }, {
     headerMode: 'none'
 });

@@ -14,7 +14,7 @@ class Home extends Component{
                 source={require('./../../images/logout.png')}
                 style={[styles.icon, {tintColor: tintColor}]}
             />
-        ),
+        )
     };
 
     constructor(props){
@@ -25,7 +25,6 @@ class Home extends Component{
     }
 
     render(){
-        console.log(this.props.user.user,'sereeee**************');
         return(
             <View style={Styles.container}>
                 <View style={Styles.header}>
@@ -42,7 +41,7 @@ class Home extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        user: state.auth.user,
+        user: state.auth.user
     };
 };
 export default connect(
