@@ -13,15 +13,16 @@ class Profile extends Component{
     constructor(props){
         super(props);
         this.state = {
-            firstName : this.props.user.first_name,
-            lastName : this.props.user.last_name,
-            email : this.props.user.email,
+            firstName : this.props.user.user.first_name,
+            lastName : this.props.user.user.last_name,
+            email : this.props.user.user.email,
             loader : false,
-            mobile: this.props.user.mobile,
+            mobile: this.props.user.user.mobile || '',
             profileImg : this.props.user.profile_picture || '',
             userId : this.props.user.id
         };
         this._onOpenActionSheet = this.onOpenActionSheet.bind(this);
+        this.updateProfil = this.updateProfil.bind(this);
 
     }
 
@@ -52,7 +53,7 @@ class Profile extends Component{
     validate() {
         const {profileImg, firstName, lastName,email, mobile } = this.state;
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(!profileImg){
+        if(!profileImg.length){
             Alert('', 'Upload image');
             return false;
         }
@@ -74,15 +75,21 @@ class Profile extends Component{
         return true;
     }
 
-    async updateProfile(){
+    async updateProfil(){
         const {profileImg, firstName, lastName,email, mobile, userId } = this.state;
+        console.log(profileImg);
+        console.log(firstName);
+        console.log(lastName);
+        console.log(email);
+        console.log(mobile);
+        console.log(userId);
         if (this.validate()) {
             try {
                 this.setState({loader: true});
                 const response = await fetch(profileImg);
                 const blob = await response.blob();
                 uploadImage(userId, blob);
-                console.log(userId,'userId')
+                console.log(userId,'userId');
                 await updateProfile(userId, {first_name: firstName, last_name: lastName,email : email, mobile: mobile});
                 this.setState({loader: false});
 
@@ -96,6 +103,7 @@ class Profile extends Component{
 
     render(){
         const {profileImg} = this.state;
+        console.log(this.props.user,'ussssssssssssssssssssssssssssss');
 
         const options = [
             'Gallery',
@@ -176,7 +184,7 @@ class Profile extends Component{
 
                                 </View>
                                 <View style={Styles.footerMain}>
-                                    <TouchableOpacity onPress={()=>{this.updateProfile()}} style={Styles.btn}>
+                                    <TouchableOpacity onPress={()=>{this.updateProfil()}} style={Styles.btn}>
                                         {this.state.loader ? <ActivityIndicator size="small" color="#0000ff" /> : <Text style={Styles.btnText}>Update Profile</Text>}
                                     </TouchableOpacity>
                                 </View>

@@ -42,7 +42,7 @@ import Styles from './Styles'
 
     async login() {
         const {email, password} = this.state;
-        //this.props.navigation.navigate("DrawerNav", {screen: "DrawerNav"});
+        this.props.navigation.navigate("DrawerNav", {screen: "DrawerNav"});
         try {
             if(email.length && password.length){
                 this.setState({loader: true});
