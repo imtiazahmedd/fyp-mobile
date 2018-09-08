@@ -6,6 +6,7 @@ import Login from '../screens/Login/Login'
 import Civil from '../screens/Civil/Civil'
 import Criminal from '../screens/Criminal/Criminal'
 import Profile from '../screens/Profile/Profile'
+import CivilDetail from '../screens/Civil/CivilDetail'
 import UpdatePassword from '../screens/Profile/UpdatePassword'
 import { connect } from 'react-redux'
 import {signOut} from './../configs/Firebase'
@@ -31,6 +32,11 @@ class DrawerDisplay extends Component{
         // this.setState({userId: userId})
     }
 
+    signOut(){
+        signOut();
+        AsyncStorage.setItem('user', '');
+        this.props.navigation.navigate("Login", {screen: "Login"})
+    }
 
     render(){
         return(
@@ -83,7 +89,7 @@ class DrawerDisplay extends Component{
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{}}>
+                <TouchableOpacity onPress={()=>{this.signOut()}}>
                     <View style={{height: height*0.1,borderWidth:0.5,borderBottomColor:'grey',borderTopColor:'transparent',borderLeftColor:'transparent',borderRightColor:'transparent'}}>
                         <View style={{flex: 1, flexDirection: 'row'}}>
                             <View style={{width: width*0.15,alignItems:'center',justifyContent:'center'}}>
@@ -144,7 +150,8 @@ const Route = createStackNavigator({
     Criminal: { screen: Criminal},
     Civil: { screen: Civil},
     Profile: {screen: Profile},
-    UpdatePassword: {screen: UpdatePassword}
+    UpdatePassword: {screen: UpdatePassword},
+    CivilDetail: {screen : CivilDetail}
 }, {
     headerMode: 'none'
 });

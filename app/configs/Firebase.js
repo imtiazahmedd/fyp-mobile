@@ -122,6 +122,10 @@ const getCriminal = () => {
         });
     })
 };
+const signOut = () =>{
+    firebase.auth().signOut();
+};
+
 
 export {
     firebase,
@@ -131,5 +135,6 @@ export {
     updateProfile,
     updatePassword,
     getCivil,
-    getCriminal
+    getCriminal,
+    signOut
 }

@@ -42,7 +42,6 @@ import Styles from './Styles'
 
     async login() {
         const {email, password} = this.state;
-        this.props.navigation.navigate("DrawerNav", {screen: "DrawerNav"});
         try {
             if(email.length && password.length){
                 this.setState({loader: true});
@@ -51,9 +50,7 @@ import Styles from './Styles'
                 let userr = JSON.stringify(user);
                 await AsyncStorage.setItem('user', userr);
                 this.setState({email : '',password : '', loader: false});
-                setTimeout(()=>{
                     this.props.navigation.navigate("DrawerNav", {screen: "DrawerNav"});
-                },3000);
                 this.props.onLogin(res);
             }else{
                 Alert.alert('','Enter email and password')
@@ -112,7 +109,7 @@ import Styles from './Styles'
 
 const mapStateToProps = (state) => {
     return {
-        user: state.auth.user,
+        user: state.auth.user
     };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -4,11 +4,11 @@ const {width, height} = Dimensions.get('window');
 
 const Styles = {
     main:{
-        width: width,
-        height:height
+        width: '100%',
+        height: '100%'
     },
     header:{
-        width:width,
+        width: '100%',
         height: height* 0.1,
         alignItems:'center',
         justifyContent:'center',
@@ -20,10 +20,10 @@ const Styles = {
         fontFamily: 'gt-walsheim-regular'
     },
     sub:{
-        width:width,
+        width: '100%',
         height: height* 0.5,
         alignItems:'center',
-        marginTop:height * 0.12
+        justifyContent : 'center'
     },
     inputStyle:{
         width: width* 0.7,
