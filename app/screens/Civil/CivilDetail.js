@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
+import { Container, Header, Content, Card, CardItem, Body } from "native-base";
 import Styles from './Styles'
 
 class CivilDetail extends Component{
@@ -19,7 +20,6 @@ class CivilDetail extends Component{
 
     render(){
         const {obj} = this.state;
-        console.log(obj,'objjjjjjjjjjjjjjjjjjjjjjjjjjj');
         return(
             <View style={Styles.main}>
                 <View style={Styles.header}>
@@ -32,16 +32,37 @@ class CivilDetail extends Component{
                         <Text style={Styles.headingText}>Civil Detail page</Text>
                     </View>
                 </View>
-                <View>
-                    <Text>section no : {obj.section_no}</Text>
-                    <Text>offence: {obj.offence}</Text>
-                    <Text>arrest : {obj.arrest_warrant}</Text>
-                    <Text>bailable : {obj.bailable}</Text>
-                    <Text>compoundable : {obj.compoundable}</Text>
-                    <Text>punishment : {obj.punishment}</Text>
-                    <Text>description : {obj.description}</Text>
-
-                </View>
+                <Container>
+                    <Content padder>
+                        <Card>
+                            <CardItem bordered>
+                                <Body>
+                                    <CardItem header bordered>
+                                        <Text><Text style={{fontWeight:'bold',fontSize:16}}>Section No</Text> : {obj.section_no}</Text>
+                                    </CardItem>
+                                    <CardItem header bordered>
+                                        <Text><Text style = {{fontWeight:'bold', fontSize:16}}>Offence</Text> : {obj.offence}</Text>
+                                    </CardItem>
+                                    <CardItem header bordered>
+                                        <Text> <Text style = {{fontWeight:'bold', fontSize:16}} >Arrest</Text>  : {obj.arrest_warrant}</Text>
+                                    </CardItem>
+                                    <CardItem header bordered>
+                                        <Text><Text style = {{fontWeight:'bold', fontSize:16}}>Bailable</Text>  : {obj.bailable}</Text>
+                                    </CardItem>
+                                    <CardItem header bordered>
+                                        <Text><Text style = {{fontWeight:'bold', fontSize:16}}>Compoundable</Text> : {obj.compoundable}</Text>
+                                    </CardItem>
+                                    <CardItem header bordered>
+                                        <Text> <Text style = {{fontWeight:'bold', fontSize:16}}>Punishment</Text> : {obj.punishment}</Text>
+                                    </CardItem>
+                                    <CardItem header bordered>
+                                        <Text><Text style = {{fontWeight:'bold', fontSize:16}}>Description</Text>  : {obj.description}</Text>
+                                    </CardItem>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </Content>
+                </Container>
             </View>
         )
     }

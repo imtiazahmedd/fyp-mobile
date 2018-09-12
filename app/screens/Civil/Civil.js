@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
-import { Container, Header, Item, Input, Icon, Button } from 'native-base'
+import {Content, Card, CardItem, Container, Header, Item, Input, Icon, Button } from 'native-base'
 import Styles from './Styles';
 import {getCivil} from '../../configs/Firebase'
 
@@ -56,7 +56,7 @@ class Civil extends Component{
                         <Text style={Styles.headingText}>Civil laws</Text>
                     </View>
                 </View>
-                <View style={{height:height*0.1,backgroundColor:'grey'}}>
+                <View style={{height:height*0.1}}>
                     <Container>
                         <Header searchBar rounded>
                             <Item>
@@ -74,8 +74,14 @@ class Civil extends Component{
                     <ScrollView>
                     {this.state[this.state.search ? 'searchArr' : 'civilArr'].map((el)=>{
                         return (
-                            <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("CivilDetail", {obj:el})}} style={{borderWidth:1,borderColor:'grey',height:height*0.15, justifyContent:'center'}}>
-                                <Text style={{margin:10}}>{el.offences}</Text>
+                            <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("CivilDetail", {obj:el})}}>
+                                <Content>
+                                    <Card>
+                                        <CardItem>
+                                            <Text style={{margin:10}}>{el.offences}</Text>
+                                        </CardItem>
+                                    </Card>
+                                </Content>
                             </TouchableOpacity>
                         )
                     })}

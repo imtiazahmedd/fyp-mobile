@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles';
-import { Container, Header, Item, Input, Icon, Button } from 'native-base'
+import {Content, Card, CardItem, Container, Header, Item, Input, Icon, Button } from 'native-base'
 import {getCriminal} from '../../configs/Firebase'
 
 class Criminal extends Component{
@@ -77,8 +77,15 @@ class Criminal extends Component{
                     <ScrollView>
                         {this.state[this.state.search ? 'searchArr' : 'criminalArr'].map((el)=>{
                             return (
-                                <TouchableOpacity  onPress={()=>{ this.props.navigation.navigate("CriminalDetail", {obj:el})}} style={{borderWidth:1,borderColor:'grey',height:height*0.15, justifyContent:'center'}}>
-                                    <Text style={{margin:10}}>{el.offence}</Text>
+                                <TouchableOpacity  onPress={()=>{ this.props.navigation.navigate("CriminalDetail", {obj:el})}}>
+                                    <Content>
+                                        <Card>
+                                            <CardItem>
+                                                <Text style={{margin:10}}>{el.offence}</Text>
+
+                                            </CardItem>
+                                        </Card>
+                                    </Content>
                                 </TouchableOpacity>
                             )
                         })}
