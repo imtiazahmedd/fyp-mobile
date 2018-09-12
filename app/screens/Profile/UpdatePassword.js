@@ -42,7 +42,8 @@ export default class UpdatePassword extends Component{
         if (this.validate()) {
             try {
                 this.setState({loader: true});
-                await updatePassword(OldPassword, NewPassword);
+                let res = await updatePassword(OldPassword, NewPassword);
+                Alert.alert('', 'Password updated sucessfully');
                 this.setState({loader : false , OldPassword : '', NewPassword : '', ReType : ''})
             } catch (e) {
                 this.setState({loader : false});

@@ -18,7 +18,7 @@ class Criminal extends Component{
             criminalArr : [],
             loader : false,
             search : '',
-            searchArr : [],
+            searchArr : []
         }
     }
 

@@ -68,8 +68,6 @@ const uploadImage = (userId, image) => {
 
 
 const updateProfile = (userId, params) => {
-    console.log(userId);
-    console.log(params);
     return db.ref('users/' + userId).update(params)
 };
 

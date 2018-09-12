@@ -18,8 +18,8 @@ class Profile extends Component{
             email : this.props.user.user.email,
             loader : false,
             mobile: this.props.user.user.mobile || '',
-            profileImg : this.props.user.profile_picture || '',
-            userId : this.props.user.id
+            profileImg : this.props.user.user.profile_picture || '',
+            userId : this.props.user.user.id
         };
         this._onOpenActionSheet = this.onOpenActionSheet.bind(this);
         this.profileSubmit = this.profileSubmit.bind(this);
@@ -77,22 +77,15 @@ class Profile extends Component{
 
     async profileSubmit(){
         const {profileImg, firstName, lastName,email, mobile, userId } = this.state;
-        console.log(profileImg);
-        console.log(firstName);
-        console.log(lastName);
-        console.log(email);
-        console.log(mobile);
-        console.log(userId);
         if (this.validate()) {
             try {
                 this.setState({loader: true});
                 const response = await fetch(profileImg);
                 const blob = await response.blob();
                 uploadImage(userId, blob);
-                console.log(userId,'userId');
-                await updateProfile(userId, {first_name: firstName, last_name: lastName,email : email, mobile: mobile});
+               let res = await updateProfile(userId, {first_name: firstName, last_name: lastName,email : email, mobile: mobile});
+               Alert.alert('','Profile updated sucessfully');
                 this.setState({loader: false});
-
             } catch (e) {
                 this.setState({loader: false});
                 Alert.alert('', e.error)
@@ -103,7 +96,6 @@ class Profile extends Component{
 
     render(){
         const {profileImg} = this.state;
-        console.log(this.props.user,'ussssssssssssssssssssssssssssss');
 
         const options = [
             'Gallery',
@@ -134,7 +126,7 @@ class Profile extends Component{
                                 <View style={Styles.profilePicCont}>
                                     <TouchableOpacity style={Styles.picSub} onPress={this._onOpenActionSheet}>
 
-                                        <Image source={profileImg ? {uri: profileImg} : require('./../../images/profile.png')} style={Styles.pic} />
+                                        <Image source={profileImg ? {uri: profileImg} : require('./../../images/profile.png')} style={{width : 60, height: 60, borderRadius : 100}} />
 
                                     </TouchableOpacity>
                                 </View>

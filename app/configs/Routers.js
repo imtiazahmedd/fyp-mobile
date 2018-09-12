@@ -40,16 +40,17 @@ class DrawerDisplay extends Component{
     }
 
     render(){
+        console.log(this.props.user,'usrrrrrrrrrrrrrrr');
         return(
             <View style={{flex: 1,flexDirection: 'column'}}>
                 <View style={{height: height*0.25,borderWidth:0.5,borderBottomColor:'grey',borderLeftColor:'transparent',borderRightColor:'transparent',borderTopColor:'transparent'}}>
                     <View style={{height : height*0.15,alignItems:'center',justifyContent:'center'}}>
                         <View style={{height:height*0.12, width:height*0.12,borderRadius:100,alignItems:'center',justifyContent:'center', borderWidth:1,borderColor:'grey'}}>
-                                {/*<Image source={{uri: this.props.user.profile_picture}} style={{width:60,height:60,borderRadius : 100}} /> */}
+                            <Image source={this.props.user.user.profile_picture ? {uri: this.props.user.user.profile_picture} : require('../images/profile.png')} style={{width : 60, height: 60, borderRadius : 100}} />
                         </View>
                     </View>
                     <View style={{height:height*0.03,alignItems:'center',justifyContent:'center'}}>
-                        <Text style={{fontSize:16}}>Name</Text>
+                        <Text style={{fontSize:16}}>{this.props.user.user.first_name + " " + this.props.user.user.last_name}</Text>
                     </View>
                 </View>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile", {screen: "Profile"})}>
