@@ -3,7 +3,7 @@ import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, Style
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles'
 
-class CivilDetail extends Component{
+class CriminalDetail extends Component{
 
     static navigationOptions = {
         header : null
@@ -13,13 +13,12 @@ class CivilDetail extends Component{
     constructor(props){
         super(props);
         this.state={
-            obj : props.navigation.state.params.obj
+            obj : this.props.navigation.state.params.obj
         }
     }
 
     render(){
-        const {obj} = this.state;
-        console.log(obj,'objjjjjjjjjjjjjjjjjjjjjjjjjjj');
+        const {obj } = this.state;
         return(
             <View style={Styles.main}>
                 <View style={Styles.header}>
@@ -29,7 +28,7 @@ class CivilDetail extends Component{
                         </TouchableOpacity>
                     </View>
                     <View style={Styles.headingDiv}>
-                        <Text style={Styles.headingText}>Civil Detail page</Text>
+                        <Text style={Styles.headingText}>Criminal Detail page</Text>
                     </View>
                 </View>
                 <View>
@@ -42,9 +41,10 @@ class CivilDetail extends Component{
                     <Text>description : {obj.description}</Text>
 
                 </View>
+
             </View>
         )
     }
 }
 
-export default CivilDetail
+export default CriminalDetail

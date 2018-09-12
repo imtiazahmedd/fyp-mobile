@@ -31,7 +31,7 @@ class Home extends Component{
                     <TouchableOpacity  style= {Styles.headerSubContent} onPress={() => this.props.navigation.openDrawer()}>
                         <Image source={require('./../../images/menu.png')} style={Styles.menuImg}/>
                     </TouchableOpacity>
-                     <Text style={Styles.departHeading}>Home</Text>
+                     <Text style={Styles.departHeading}>Dashboard</Text>
                 </View>
             </View>
         )

@@ -22,7 +22,7 @@ class Profile extends Component{
             userId : this.props.user.id
         };
         this._onOpenActionSheet = this.onOpenActionSheet.bind(this);
-        this.updateProfil = this.updateProfil.bind(this);
+        this.profileSubmit = this.profileSubmit.bind(this);
 
     }
 
@@ -54,7 +54,7 @@ class Profile extends Component{
         const {profileImg, firstName, lastName,email, mobile } = this.state;
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if(!profileImg.length){
-            Alert('', 'Upload image');
+            Alert.alert('', 'Upload image');
             return false;
         }
         else if (firstName.length < 4) {
@@ -75,7 +75,7 @@ class Profile extends Component{
         return true;
     }
 
-    async updateProfil(){
+    async profileSubmit(){
         const {profileImg, firstName, lastName,email, mobile, userId } = this.state;
         console.log(profileImg);
         console.log(firstName);
@@ -184,7 +184,7 @@ class Profile extends Component{
 
                                 </View>
                                 <View style={Styles.footerMain}>
-                                    <TouchableOpacity onPress={()=>{this.updateProfil()}} style={Styles.btn}>
+                                    <TouchableOpacity onPress={()=>{this.profileSubmit()}} style={Styles.btn}>
                                         {this.state.loader ? <ActivityIndicator size="small" color="#0000ff" /> : <Text style={Styles.btnText}>Update Profile</Text>}
                                     </TouchableOpacity>
                                 </View>

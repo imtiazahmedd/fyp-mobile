@@ -7,6 +7,7 @@ import Civil from '../screens/Civil/Civil'
 import Criminal from '../screens/Criminal/Criminal'
 import Profile from '../screens/Profile/Profile'
 import CivilDetail from '../screens/Civil/CivilDetail'
+import CriminalDetail from '../screens/Criminal/CriminalDetail'
 import UpdatePassword from '../screens/Profile/UpdatePassword'
 import { connect } from 'react-redux'
 import {signOut} from './../configs/Firebase'
@@ -151,7 +152,8 @@ const Route = createStackNavigator({
     Civil: { screen: Civil},
     Profile: {screen: Profile},
     UpdatePassword: {screen: UpdatePassword},
-    CivilDetail: {screen : CivilDetail}
+    CivilDetail: {screen : CivilDetail},
+    CriminalDetail: {screen : CriminalDetail}
 }, {
     headerMode: 'none'
 });

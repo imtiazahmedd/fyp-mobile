@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
+import { Container, Header, Item, Input, Icon, Button } from 'native-base'
 import Styles from './Styles';
 import {getCivil} from '../../configs/Firebase'
 
@@ -15,7 +16,9 @@ class Civil extends Component{
         super(props);
         this.state={
             civilArr : [],
-            loader : false
+            loader : false,
+            search : '',
+            searchArr : []
         }
     }
 
@@ -29,6 +32,16 @@ class Civil extends Component{
         this.setState({civilArr : res})
     }
 
+
+    checkSearch(text){
+         this.setState({search : text});
+         let filterText = this.state.civilArr.filter((el)=>{
+             if(el.offences){
+                 return el.offences.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+             }
+         });
+        this.setState({searchArr : filterText})
+    }
 
     render(){
         return(
@@ -44,12 +57,22 @@ class Civil extends Component{
                     </View>
                 </View>
                 <View style={{height:height*0.1,backgroundColor:'grey'}}>
-
+                    <Container>
+                        <Header searchBar rounded>
+                            <Item>
+                                <Icon name="ios-search" />
+                                <Input onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />
+                            </Item>
+                            <Button transparent>
+                                <Text>Search</Text>
+                            </Button>
+                        </Header>
+                    </Container>
                 </View>
                 <View style={{height:height*0.8,alignItems:'center', justifyContent:'center'}}>
                 {this.state.loader ? <ActivityIndicator size="large" color="#0000ff" /> : <View>
                     <ScrollView>
-                    {this.state.civilArr.map((el)=>{
+                    {this.state[this.state.search ? 'searchArr' : 'civilArr'].map((el)=>{
                         return (
                             <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("CivilDetail", {obj:el})}} style={{borderWidth:1,borderColor:'grey',height:height*0.15, justifyContent:'center'}}>
                                 <Text style={{margin:10}}>{el.offences}</Text>
