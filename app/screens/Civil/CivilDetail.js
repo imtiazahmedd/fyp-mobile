@@ -41,7 +41,7 @@ class CivilDetail extends Component{
                                         <Text><Text style={{fontWeight:'bold',fontSize:16}}>Section No</Text> : {obj.section_no}</Text>
                                     </CardItem>
                                     <CardItem header bordered>
-                                        <Text><Text style = {{fontWeight:'bold', fontSize:16}}>Offence</Text> : {obj.offence}</Text>
+                                        <Text><Text style = {{fontWeight:'bold', fontSize:16}}>Offence</Text> : {obj.offences}</Text>
                                     </CardItem>
                                     <CardItem header bordered>
                                         <Text> <Text style = {{fontWeight:'bold', fontSize:16}} >Arrest</Text>  : {obj.arrest_warrant}</Text>

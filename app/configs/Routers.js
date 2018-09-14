@@ -9,6 +9,7 @@ import Profile from '../screens/Profile/Profile'
 import CivilDetail from '../screens/Civil/CivilDetail'
 import CriminalDetail from '../screens/Criminal/CriminalDetail'
 import UpdatePassword from '../screens/Profile/UpdatePassword'
+import AddCivilLaws from '../screens/Civil/AddCivilLaws'
 import { connect } from 'react-redux'
 import {signOut} from './../configs/Firebase'
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput,ScrollView, StyleSheet,AsyncStorage} from 'react-native'
@@ -114,7 +115,7 @@ class DrawerDisplay extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        user: state.auth.user,
+        user: state.auth.user
     };
 };
 
@@ -154,7 +155,8 @@ const Route = createStackNavigator({
     Profile: {screen: Profile},
     UpdatePassword: {screen: UpdatePassword},
     CivilDetail: {screen : CivilDetail},
-    CriminalDetail: {screen : CriminalDetail}
+    CriminalDetail: {screen : CriminalDetail},
+    AddCivilLaws: {screen : AddCivilLaws}
 }, {
     headerMode: 'none'
 });

@@ -120,6 +120,20 @@ const getCriminal = () => {
         });
     })
 };
+
+const civilLawAdd = (params) =>{
+    return new Promise((resolve, reject)=>{
+        db.ref("civil/").push(params)
+            .then((res)=>{
+                resolve(res)
+            })
+            .catch((error)=>{
+                reject(error)
+            })
+    })
+};
+
+
 const signOut = () =>{
     firebase.auth().signOut();
 };
@@ -134,5 +148,6 @@ export {
     updatePassword,
     getCivil,
     getCriminal,
-    signOut
+    signOut,
+    civilLawAdd
 }
