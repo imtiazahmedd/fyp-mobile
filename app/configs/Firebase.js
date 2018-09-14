@@ -132,7 +132,17 @@ const civilLawAdd = (params) =>{
             })
     })
 };
-
+const crimainlLawAdd = (params) =>{
+    return new Promise((resolve, reject)=>{
+        db.ref("criminal/").push(params)
+            .then((res)=>{
+                resolve(res)
+            })
+            .catch((error)=>{
+                reject(error)
+            })
+    })
+};
 
 const signOut = () =>{
     firebase.auth().signOut();
@@ -149,5 +159,6 @@ export {
     getCivil,
     getCriminal,
     signOut,
-    civilLawAdd
+    civilLawAdd,
+    crimainlLawAdd
 }

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles';
+import { connect } from 'react-redux'
 import {Content, Card, CardItem, Container, Header, Item, Input, Icon, Button } from 'native-base'
 import {getCriminal} from '../../configs/Firebase'
 
@@ -18,7 +19,8 @@ class Criminal extends Component{
             criminalArr : [],
             loader : false,
             search : '',
-            searchArr : []
+            searchArr : [],
+            user : this.props.user.user
         }
     }
 
@@ -46,6 +48,7 @@ class Criminal extends Component{
 
 
     render(){
+        const {user} = this.state;
         return(
             <View style={Styles.main}>
                 <View style={Styles.header}>
@@ -55,7 +58,12 @@ class Criminal extends Component{
                         </TouchableOpacity>
                     </View>
                     <View style={Styles.headingDiv}>
-                        <Text style={Styles.headingText}>Criminal laws</Text>
+                        <View style={{flexDirection:'row', flexWrap : 'wrap'}}>
+                            <Text style={Styles.headingText}>Criminal laws</Text>
+                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCriminalLaws")}}>
+                                <Image source={require('../../images/add.png')} style={Styles.headerImg2}/>
+                            </TouchableOpacity>}
+                        </View>
                     </View>
 
                 </View>
@@ -96,5 +104,12 @@ class Criminal extends Component{
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.auth.user
+    };
+};
+export default connect(
+    mapStateToProps
+)(Criminal)
 
-export default Criminal

@@ -58,7 +58,7 @@ class Civil extends Component{
                     <View style={Styles.headingDiv}>
                         <View style={{flexDirection:'row', flexWrap : 'wrap'}}>
                             <Text style={Styles.headingText}>Civil laws</Text>
-                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCivilLaws")}}>
+                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("CivilDetail")}}>
                                 <Image source={require('../../images/add.png')} style={Styles.headerImg2}/>
                             </TouchableOpacity>}
                         </View>
