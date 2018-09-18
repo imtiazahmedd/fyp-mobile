@@ -65,7 +65,7 @@ class AddCivilLaws extends Component{
             try {
                 let res = await civilLawAdd({section_no, offences, arrest_warrant, bailable, compoundable, punishment, description});
                 this.setState({section_no: '',offences:'',arrest_warrant:'',bailable: '',compoundable:'',punishment: '', description : ''});
-                Alert.alert('','Civil law updated sucessfully')
+                Alert.alert('','Civil law Added sucessfully')
             } catch(e) {
                 Alert.alert('','Error' + e);
             }

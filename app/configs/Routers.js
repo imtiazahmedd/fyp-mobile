@@ -10,7 +10,9 @@ import CivilDetail from '../screens/Civil/CivilDetail'
 import CriminalDetail from '../screens/Criminal/CriminalDetail'
 import UpdatePassword from '../screens/Profile/UpdatePassword'
 import AddCivilLaws from '../screens/Civil/AddCivilLaws'
+import EditCivilLaws from '../screens/Civil/EditCivilLaws'
 import AddCriminalLaws from '../screens/Criminal/AddCriminalLaws'
+import EditCriminalLaws from '../screens/Criminal/EditCriminalLaws'
 import { connect } from 'react-redux'
 import {signOut} from './../configs/Firebase'
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput,ScrollView, StyleSheet,AsyncStorage} from 'react-native'
@@ -158,7 +160,9 @@ const Route = createStackNavigator({
     CivilDetail: {screen : CivilDetail},
     CriminalDetail: {screen : CriminalDetail},
     AddCivilLaws: {screen : AddCivilLaws},
-    AddCriminalLaws: {screen : AddCriminalLaws}
+    AddCriminalLaws: {screen : AddCriminalLaws},
+    EditCivilLaws: {screen : EditCivilLaws},
+    EditCriminalLaws: {screen : EditCriminalLaws}
 }, {
     headerMode: 'none'
 });
