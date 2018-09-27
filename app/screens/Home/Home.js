@@ -33,6 +33,9 @@ class Home extends Component{
                     </TouchableOpacity>
                      <Text style={Styles.departHeading}>Dashboard</Text>
                 </View>
+                <View>
+                    <Text style={{fontSize:20, fontWeight:'bold'}}>Dashboard</Text>
+                </View>
             </View>
         )
     }
