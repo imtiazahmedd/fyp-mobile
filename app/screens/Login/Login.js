@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 import Signup from "../Register/Signup";
-
 import {login} from "../../configs/Firebase";
 const {width, height} = Dimensions.get('window');
 import {onLogin} from '../../redux/auth/action'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import {TextField} from 'react-native-material-textfield'
 import Styles from './Styles'
  class Login extends Component{
 

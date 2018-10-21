@@ -5,7 +5,7 @@ const Styles = {
         flex: 1
     },
     header:{
-        flex:0.1,
+        height:height*0.1,
         flexDirection: 'row',
         backgroundColor: '#127c7e'
 
@@ -31,3 +31,57 @@ const Styles = {
 };
 
 export default Styles;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
