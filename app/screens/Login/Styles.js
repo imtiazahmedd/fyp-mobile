@@ -60,6 +60,11 @@ const Styles = {
         fontSize:16,
         color: '#127c7e',
         fontFamily: 'gt-walsheim-regular'
+    },
+    inputFieldd:{
+        width: width* 0.7,
+        height: height*0.07,
+        marginBottom: height * 0.025
     }
 };
 

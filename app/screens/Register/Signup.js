@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, Dimensions, TextInput, TouchableOpacity, Image, ActivityIndicator, Alert, ScrollView} from 'react-native';
 const {width, height} = Dimensions.get('window');
 import {register} from '../../configs/Firebase';
+import {TextField} from 'react-native-material-textfield'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Styles from './Styles'
 
 export default class Signup extends Component {
@@ -76,81 +78,72 @@ export default class Signup extends Component {
         return (
             <View style={Styles.main}>
 
-                    <View style={Styles.header}>
-                        <View style={Styles.headerSub}>
-                            <TouchableOpacity onPress={()=> this.props.navigation.goBack()}>
-                                <Image source={require('../../images/leftArrow.png')} style={Styles.headerImg}/>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={Styles.headingDiv}>
-                                 <Text style={Styles.headingText}>Create an Account</Text>
-                        </View>
+                <View style={Styles.header}>
+                    <View style={Styles.headerSub}>
+                        <TouchableOpacity onPress={()=> this.props.navigation.goBack()}>
+                            <Image source={require('../../images/leftArrow.png')} style={Styles.headerImg}/>
+                        </TouchableOpacity>
                     </View>
+                    <View style={Styles.headingDiv}>
+                        <Text style={Styles.headingText}>Create an Account</Text>
+                    </View>
+                </View>
+                <View style={{height:height*0.8}}>
 
-
-                    <View style={Styles.subDiv}>
-                            <View style={{width: width, alignItems:'center', justifyContent: 'center'}}>
-                                <View>
-                                    <TextInput
-                                        underlineColorAndroid = 'transparent'
-                                        placeholder= 'First Name'
-                                        value={this.state.firstName}
-                                        style={Styles.inputField}
-                                        onChangeText = {(text)=> this.setState({firstName: text})}
-                                    />
-                                </View>
-                                <View>
-                                    <TextInput
-                                        underlineColorAndroid = 'transparent'
-                                        placeholder= 'Last Name'
-                                        value={this.state.lastName}
-                                        style={Styles.inputField}
-                                        onChangeText = {(text)=> this.setState({lastName: text})}
-                                    />
-                                </View>
-                                <View>
-                                    <TextInput
-                                        underlineColorAndroid = 'transparent'
-                                        placeholder= 'Email'
-                                        value={this.state.email}
-                                        style={Styles.inputField}
-                                        onChangeText = {(text)=> this.setState({email: text})}
-                                    />
-                                </View>
-                                <View>
-                                    <TextInput
-                                        underlineColorAndroid = 'transparent'
-                                        placeholder= 'Password'
-                                        value={this.state.password}
-                                        secureTextEntry={true}
-                                        style={Styles.inputField}
-                                        onChangeText = {(text)=> this.setState({password: text})}
-                                    />
-                                </View>
-                                <View>
-                                    <TextInput
-                                        underlineColorAndroid = 'transparent'
-                                        placeholder= 'Re-type password'
-                                        value={this.state.retypePass}
-                                        secureTextEntry={true}
-                                        style={Styles.inputField}
-                                        onChangeText = {(text)=> this.setState({retypePass: text})}
-                                    />
-                                </View>
-                            </View>
-                        <View>
+                    <View style={{flex: 1,flexDirection: 'column',justifyContent: 'center'}}>
+                        <View style={{height: height*0.1, marginHorizontal:45}}>
+                            <TextField
+                                label='First Name'
+                                value={this.state.firstName}
+                                onChangeText = {(text)=> this.setState({firstName: text})}
+                            />
+                        </View>
+                        <View style={{height: height*0.1 ,marginHorizontal:45}}>
+                            <TextField
+                                label='Last Name'
+                                value={this.state.lastName}
+                                onChangeText = {(text)=> this.setState({lastName: text})}
+                            />
+                        </View>
+                        <View style={{height: height*0.1 ,marginHorizontal:45}}>
+                            <TextField
+                                label='Email'
+                                value={this.state.email}
+                                onChangeText = {(text)=> this.setState({email: text})}
+                            />
+                        </View>
+                        <View style={{height: height*0.1 ,marginHorizontal:45}}>
+                            <TextField
+                                label='Password'
+                                secureTextEntry={true}
+                                value={this.state.password}
+                                onChangeText = {(text)=> this.setState({password: text})}
+                            />
+                        </View>
+                        <View style={{height: height*0.1 ,marginHorizontal:45}}>
+                            <TextField
+                                label='Re-type password'
+                                secureTextEntry={true}
+                                value={this.state.retypePass}
+                                onChangeText = {(text)=> this.setState({retypePass: text})}
+                            />
+                        </View>
+                        <View style={{height: height*0.15,marginHorizontal:45, alignItems:'center'}}>
                             <TouchableOpacity style={this.state.role ? Styles.btn1 : Styles.btn} onPress={()=>{this.signup()}}>
                                 {this.state.loader ? <ActivityIndicator size="small" color="#00ff00" /> : (this.state.role ? <Text style={Styles.btnText}>Register User</Text> : <Text style={Styles.btnText}>Signup</Text>)}
                             </TouchableOpacity>
                         </View>
-                        <View style={Styles.footerDiv}>
+                        <View style={{height: height*0.03 ,marginHorizontal:45, alignItems:'center'}}>
                             <TouchableOpacity onPress={() => this.props.navigation.navigate("Login", {screen: "Login"})}>
                                 <Text style={Styles.footerText}>Back to login</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
+                </View>
+
 
             </View>
         );
     }
 }
+

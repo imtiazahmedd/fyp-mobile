@@ -139,6 +139,10 @@ const Styles = {
         fontSize:18,
         color:'#127c7e',
         fontFamily: 'gt-walsheim-regular'
+    },
+    inputFieldd:{
+        width: width* 0.7,
+        height: height*0.07
     }
 };
 

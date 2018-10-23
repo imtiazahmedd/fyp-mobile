@@ -71,22 +71,18 @@ import Styles from './Styles'
                     <Text style={Styles.headerText}>LOG IN</Text>
                 </View>
                 <View style={Styles.sub}>
-                    <View>
-                        <TextInput
-                            underlineColorAndroid = 'transparent'
-                            placeholder= 'Email'
+                    <View style={Styles.inputFieldd}>
+                        <TextField
+                            label='Email'
                             value={this.state.email}
-                            style={Styles.inputStyle}
                             onChangeText = {(text)=> this.setState({email: text})}
                         />
                     </View>
-                    <View>
-                        <TextInput
-                            underlineColorAndroid = 'transparent'
+                    <View style={Styles.inputFieldd}>
+                        <TextField
                             secureTextEntry={true}
                             value={this.state.password}
-                            placeholder= 'Password'
-                            style={Styles.inputStyle}
+                            label= 'Password'
                             onChangeText = {(text)=> this.setState({password: text})}
                         />
                     </View>
