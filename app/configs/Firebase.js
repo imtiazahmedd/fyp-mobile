@@ -70,7 +70,12 @@ const uploadImage = (userId, image) => {
 const updateProfile = (userId, params) => {
     return db.ref('users/' + userId).update(params)
 };
-
+const updateCivil = (id, params) =>{
+   return db.ref("civil/" + id).update(params)
+};
+const updateCriminal = (id, params) =>{
+    return db.ref("criminal/" + id).update(params)
+};
 
 const updatePassword = (oldPassword,newPassword) =>{
 
@@ -156,6 +161,8 @@ export {
     uploadImage,
     updateProfile,
     updatePassword,
+    updateCivil,
+    updateCriminal,
     getCivil,
     getCriminal,
     signOut,

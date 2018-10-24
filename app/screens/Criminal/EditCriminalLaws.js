@@ -3,7 +3,7 @@ import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, Style
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles'
 import { Container, Header, Content, Textarea, Form } from "native-base";
-import {civilLawAdd} from '../../configs/Firebase'
+import {civilLawAdd, updateCriminal} from '../../configs/Firebase'
 
 class EditCriminalLaws extends Component{
 
@@ -16,6 +16,7 @@ class EditCriminalLaws extends Component{
         super(props);
         this.state={
             obj : props.navigation.state.params.obj,
+            id : props.navigation.state.params.obj._id,
             section_no : props.navigation.state.params.obj.section_no,
             offences : props.navigation.state.params.obj.offence,
             arrest_warrant : props.navigation.state.params.obj.arrest_warrant,
@@ -26,15 +27,17 @@ class EditCriminalLaws extends Component{
         }
     }
 
-    async updateCivilLaw(){
-        //const {section_no, offences, arrest_warrant, bailable, compoundable, punishment, description } = this.state;
-        //    try {
-        //        let res = await civilLawAdd({section_no, offences, arrest_warrant, bailable, compoundable, punishment, description});
-        //        this.setState({section_no: '',offences:'',arrest_warrant:'',bailable: '',compoundable:'',punishment: '', description : ''});
-        //        Alert.alert('','Civil law updated sucessfully')
-        //    } catch(e) {
-        //        Alert.alert('','Error' + e);
-        //    }
+    async updateCriminalLaw(){
+        const {section_no, offences, arrest_warrant, bailable, compoundable, punishment, description, id } = this.state;
+
+        try {
+            let res = await updateCriminal(id, {arrest_warrant: arrest_warrant, bailable: bailable,compoundable : compoundable, description: description,offences : offences, punishment: punishment,section_no: section_no  });
+            this.setState({arrest_warrant: '',bailable:'',compoundable:'',description: '',offences:'',punishment: '', section_no : ''});
+            Alert.alert('', section_no + ' # updated sucessfully');
+            this.props.navigation.navigate('Criminal')
+        } catch(e) {
+            Alert.alert('','Error' + e);
+        }
     }
     render(){
         const {obj} = this.state;
@@ -71,7 +74,7 @@ class EditCriminalLaws extends Component{
                             <Text>Description</Text>
                             <Textarea value={this.state.description} onChangeText = {(text)=> this.setState({description: text})} rowSpan={4} bordered placeholder="Description" />
                         </Form>
-                        <TouchableOpacity style={Styles.addLaw}  onPress={()=>{this.updateCivilLaw()}}>
+                        <TouchableOpacity style={Styles.addLaw}  onPress={()=>{this.updateCriminalLaw()}}>
                             <Text style={Styles.addLawText}>update</Text>
                         </TouchableOpacity>
                     </Content>
