@@ -21,8 +21,14 @@ class AddCriminalLaws extends Component{
             bailable : '',
             compoundable : '',
             punishment : '',
-            description : ''
+            description : '',
+            dynamic : ''
         }
+    }
+
+    componentWillMount(){
+        let fun = this.props.navigation.state.params.lawAdded;
+        this.setState({dynamic : fun})
     }
 
     validation(){
@@ -66,6 +72,9 @@ class AddCriminalLaws extends Component{
                 let res = await crimainlLawAdd({section_no, offence, arrest_warrant, bailable, compoundable, punishment, description});
                 this.setState({section_no: '',offence:'',arrest_warrant:'',bailable: '',compoundable:'',punishment: '', description : ''});
                 Alert.alert('','Criminal law updated sucessfully')
+                this.state.dynamic();
+                this.props.navigation.goBack();
+
             } catch(e) {
                 Alert.alert('','Error' + e);
             }

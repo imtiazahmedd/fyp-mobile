@@ -21,7 +21,8 @@ class Criminal extends Component{
             search : '',
             searchArr : [],
             user : this.props.user.user
-        }
+        };
+        this.lawAdded = this.lawAdded.bind(this);
     }
 
     componentWillMount(){
@@ -46,7 +47,9 @@ class Criminal extends Component{
         this.setState({searchArr : filterText})
     }
 
-
+    lawAdded(){
+        this.getCriminalLaws()
+    }
     render(){
         const {user} = this.state;
         return(
@@ -60,7 +63,7 @@ class Criminal extends Component{
                     <View style={Styles.headingDiv}>
                         <View style={{flexDirection:'row', flexWrap : 'wrap'}}>
                             <Text style={Styles.headingText}>Criminal laws</Text>
-                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCriminalLaws")}}>
+                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCriminalLaws", {lawAdded : this.lawAdded})}}>
                                 <Image source={require('../../images/add.png')} style={Styles.headerImg2}/>
                             </TouchableOpacity>}
                         </View>

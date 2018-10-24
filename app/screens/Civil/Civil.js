@@ -21,9 +21,9 @@ class Civil extends Component{
             search : '',
             searchArr : [],
             user : this.props.user.user
-        }
+        };
+        this.lawAdded = this.lawAdded.bind(this);
     }
-
     componentWillMount(){
         this.getCivilLaws()
     }
@@ -44,8 +44,11 @@ class Civil extends Component{
          });
         this.setState({searchArr : filterText})
     }
-
+    lawAdded(){
+        this.getCivilLaws()
+    }
     render(){
+        console.log(this.state.lawAdded,'chalta he render state update pr')
         const {user} = this.state;
         return(
             <View style={Styles.main}>
@@ -58,7 +61,7 @@ class Civil extends Component{
                     <View style={Styles.headingDiv}>
                         <View style={{flexDirection:'row', flexWrap : 'wrap'}}>
                             <Text style={Styles.headingText}>Civil laws</Text>
-                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCivilLaws")}}>
+                            {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCivilLaws", {lawAdded : this.lawAdded})}}>
                                 <Image source={require('../../images/add.png')} style={Styles.headerImg2}/>
                             </TouchableOpacity>}
                         </View>
