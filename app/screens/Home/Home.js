@@ -66,9 +66,9 @@ class Home extends Component{
                                                             Welcome To Legal Justice
                                                         </Text>
                                                     </View>
-                                                    <View style={{flex:0.3,alignItems:'center', justifyContent:'center'}}>
-                                                        <Image source={require('./../../images/menu.png')} style={{width:100, height:70}}/>
-                                                    </View>
+                                                    <TouchableOpacity style={{flex:0.3,alignItems:'center', justifyContent:'center'}}>
+                                                        <Image source={require('./../../images/seven.jpeg')} style={{width:200, height:120, borderRadius:10}}/>
+                                                    </TouchableOpacity>
                                                     <View style={{flex:0.15,alignItems:'center', justifyContent:'center'}}>
                                                         <Text style={{fontSize:17}}>
                                                             Business Law
@@ -85,9 +85,9 @@ class Home extends Component{
                                                 </View>
                                             </View>
                                             <View style={{flex:0.333}}>
-                                                <View style={{flex:0.3,alignItems:'center', justifyContent:'center'}}>
-                                                    <Image source={require('./../../images/menu.png')} style={{width:100, height:70}}/>
-                                                </View>
+                                                <TouchableOpacity style={{flex:0.3,alignItems:'center', justifyContent:'center'}}>
+                                                    <Image source={require('./../../images/four.jpg')} style={{width:200, height:120, borderRadius:10}}/>
+                                                </TouchableOpacity>
                                                 <View style={{flex:0.15,alignItems:'center', justifyContent:'center'}}>
                                                     <Text style={{fontSize:17}}>
                                                         Family Law
@@ -99,14 +99,13 @@ class Home extends Component{
                                                          institutions to regulate behavior.[2] Law is a system that regulates and ensures that
                                                           individuals or a community Law is a system of rules that are created and enforced
                                                           through social or governmental institutions to regulate behavior.
-                                                        individuals or a community Law is a system of rules that are created and enforced
                                                     </Text>
                                                 </View>
                                             </View>
                                             <View style={{flex:0.333}}>
-                                                <View style={{flex:0.3,alignItems:'center', justifyContent:'center'}}>
-                                                    <Image source={require('./../../images/menu.png')} style={{width:100, height:70}}/>
-                                                </View>
+                                                <TouchableOpacity style={{flex:0.3,alignItems:'center', justifyContent:'center'}}>
+                                                    <Image source={require('./../../images/image-2.jpg')} style={{width:200, height: 120, borderRadius:10}}/>
+                                                </TouchableOpacity>
                                                 <View style={{flex:0.15,alignItems:'center', justifyContent:'center'}}>
                                                     <Text style={{fontSize:17}}>
                                                         People Security
@@ -125,14 +124,22 @@ class Home extends Component{
                                                 <View style={{color:'green', height:120}}>
                                                     <View style={{flex: 1,flexDirection: 'column',justifyContent: 'center'}}>
                                                         <View style={{flex:0.6,alignItems:'center', justifyContent:'center'}}>
-                                                            <Image source={require('./../../images/menu.png')} style={{width:100, height:30}}/>
+                                                            <Image source={require('./../../images/logo.png')} style={{width:100, height:30}}/>
                                                         </View>
-                                                        <View style={{flex:0.4, backgroundColor: 'steelblue',alignItems:'center', justifyContent:'center'}}>
+                                                        <View style={{flex:0.4,alignItems:'center', justifyContent:'center'}}>
                                                             <View style={{flex: 1, flexDirection: 'row'}}>
-                                                                <View style={{flex:0.15, backgroundColor: 'powderblue'}} />
-                                                                <View style={{flex:0.15, backgroundColor: 'skyblue'}} />
-                                                                <View style={{flex:0.15, backgroundColor: 'steelblue'}} />
-                                                                <View style={{flex:0.15, backgroundColor: 'skyblue'}} />
+                                                                <TouchableOpacity style={{flex:0.15,alignItems:'center', justifyContent:'center'}}>
+                                                                    <Image source={require('./../../images/search.png')} style={{width:30, height:30}}/>
+                                                                </TouchableOpacity>
+                                                                <TouchableOpacity style={{flex:0.15, alignItems:'center', justifyContent:'center'}}>
+                                                                    <Image source={require('./../../images/twitter.png')} style={{width:40, height:40}}/>
+                                                                </TouchableOpacity>
+                                                                <TouchableOpacity style={{flex:0.15, alignItems:'center', justifyContent:'center'}}>
+                                                                    <Image source={require('./../../images/linkedin.png')} style={{width:40, height:40}}/>
+                                                                </TouchableOpacity>
+                                                                <TouchableOpacity style={{flex:0.15, alignItems:'center', justifyContent:'center'}}>
+                                                                    <Image source={require('./../../images/facebook.png')} style={{width:40, height:40}}/>
+                                                                </TouchableOpacity>
                                                             </View>
                                                         </View>
                                                     </View>

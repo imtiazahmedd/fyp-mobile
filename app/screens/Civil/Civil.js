@@ -85,7 +85,7 @@ class Civil extends Component{
                     <ScrollView>
                     {this.state[this.state.search ? 'searchArr' : 'civilArr'].map((el)=>{
                         return (
-                            <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("CivilDetail", {obj:el})}}>
+                            <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("CivilDetail", {obj:el, lawAdded : this.lawAdded})}}>
                                 <Content>
                                     <Card>
                                         <CardItem>

@@ -45,7 +45,12 @@ const login = ({email, password}) => {
             });
     })
 };
-
+const deleteCivilLaws = (id) =>{
+  return db.ref('civil/' + id).remove();
+};
+const deleteCriminalLaws = (id) =>{
+    return db.ref('criminal/' + id).remove();
+};
 const uploadImage = (userId, image) => {
     var storageRef = firebase.storage().ref();
     var imagesRef = storageRef.child('images/profile_'+ userId +'.jpg');
@@ -167,5 +172,7 @@ export {
     getCriminal,
     signOut,
     civilLawAdd,
-    crimainlLawAdd
+    crimainlLawAdd,
+    deleteCivilLaws,
+    deleteCriminalLaws
 }

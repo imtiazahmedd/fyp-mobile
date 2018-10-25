@@ -88,7 +88,7 @@ class Criminal extends Component{
                     <ScrollView>
                         {this.state[this.state.search ? 'searchArr' : 'criminalArr'].map((el)=>{
                             return (
-                                <TouchableOpacity  onPress={()=>{ this.props.navigation.navigate("CriminalDetail", {obj:el})}}>
+                                <TouchableOpacity  onPress={()=>{ this.props.navigation.navigate("CriminalDetail", {obj:el, lawAdded : this.lawAdded})}}>
                                     <Content>
                                         <Card>
                                             <CardItem>

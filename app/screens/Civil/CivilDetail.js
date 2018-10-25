@@ -3,12 +3,14 @@ import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, Style
 const {width, height} = Dimensions.get('window');
 import { Container,Button, Header, Content, Card, CardItem, Body } from "native-base";
 import { connect } from 'react-redux'
+import {deleteCivilLaws} from './../../configs/Firebase'
 import Styles from './Styles'
 
 class CivilDetail extends Component{
 
     static navigationOptions = {
-        header : null
+        header : null,
+        dynamic : ''
     };
 
 
@@ -20,6 +22,33 @@ class CivilDetail extends Component{
         }
     }
 
+    componentWillMount(){
+        let fun = this.props.navigation.state.params.lawAdded;
+        this.setState({dynamic : fun})
+    }
+
+    deleteLaw(id){
+        Alert.alert(
+            'Confirmation',
+            'Are you sure you want to delete',
+            [
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                {text: 'OK', onPress: () => this.delete(id)}
+            ],
+            { cancelable: false }
+        )
+    }
+   async delete(id){
+        try {
+            let res = await deleteCivilLaws(id);
+            Alert.alert('', 'law deleted sucessfully');
+            this.state.dynamic();
+            this.props.navigation.goBack();
+
+        } catch(e) {
+            Alert.alert('','Error' + e);
+        }
+    }
     render(){
         const {obj, user} = this.state;
         return(
@@ -67,7 +96,7 @@ class CivilDetail extends Component{
                                    <Button onPress={()=>{ this.props.navigation.navigate("EditCivilLaws",{obj : obj})}} style={{marginLeft:width*0.15,borderRadius:5}} primary><Text style={{paddingHorizontal:25,paddingVertical : 10,color:'#fff'}}> Edit </Text></Button>
                                </View>
                                <View style={{width: width*0.5, height: height*0.1,alignItems:'center',justifyContent:'center'}} >
-                                   <Button onPress={()=> this.props.navigation.goBack()} style={{marginLeft:width*0.12,borderRadius:5}} success><Text style={{paddingHorizontal:15,paddingVertical : 10,color:'#fff'}}> Delete </Text></Button>
+                                   <Button onPress={()=> this.deleteLaw(obj._id)} style={{marginLeft:width*0.12,borderRadius:5}} success><Text style={{paddingHorizontal:15,paddingVertical : 10,color:'#fff'}}> Delete </Text></Button>
                                </View>
                            </View>}
                         </Card>
