@@ -72,7 +72,7 @@ class Criminal extends Component{
                 </View>
                 <View style={{height:height*0.1,backgroundColor:'grey'}}>
                     <Container>
-                        <Header searchBar rounded>
+                        <Header style={{backgroundColor:'lightgrey'}} searchBar rounded>
                             <Item>
                                 <Icon name="ios-search" />
                                 <Input onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />

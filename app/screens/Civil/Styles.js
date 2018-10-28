@@ -59,7 +59,7 @@ const Styles={
     },
     addLawText:{
         fontSize:18,
-        color:'white',
+        color:'#fff',
         fontFamily: 'gt-walsheim-regular'
     },
 
