@@ -31,9 +31,10 @@ class EditCriminalLaws extends Component{
         const {section_no, offences, arrest_warrant, bailable, compoundable, punishment, description, id } = this.state;
 
         try {
-            let res = await updateCriminal(id, {arrest_warrant: arrest_warrant, bailable: bailable,compoundable : compoundable, description: description,offences : offences, punishment: punishment,section_no: section_no  });
+            let res = await updateCriminal(id, {arrest_warrant: arrest_warrant, bailable: bailable,compoundable : compoundable, description: description,offence : offences, punishment: punishment,section_no: section_no  });
             this.setState({arrest_warrant: '',bailable:'',compoundable:'',description: '',offences:'',punishment: '', section_no : ''});
             Alert.alert('', section_no + ' # updated sucessfully');
+            this.props.navigation.state.params.func();
             this.props.navigation.navigate('Criminal')
         } catch(e) {
             Alert.alert('','Error' + e);

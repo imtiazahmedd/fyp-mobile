@@ -94,7 +94,7 @@ class CriminalDetail extends Component{
                             </CardItem>
                             {user.isAdmin && <View style={{flex: 1, flexDirection:'row' ,height:height*0.15,width:width}}>
                                 <View style={{width: width*0.5, height: height*0.1,alignItems:'center',justifyContent:'center'}}>
-                                    <Button onPress={()=>{ this.props.navigation.navigate("EditCriminalLaws",{obj : obj})}} style={{marginLeft:width*0.15,borderRadius:5}} primary><Text style={{paddingHorizontal:25,paddingVertical : 10,color:'#fff'}}> Edit </Text></Button>
+                                    <Button onPress={()=>{ this.props.navigation.navigate("EditCriminalLaws",{obj : obj, func : this.props.navigation.state.params.lawAdded})}} style={{marginLeft:width*0.15,borderRadius:5}} primary><Text style={{paddingHorizontal:25,paddingVertical : 10,color:'#fff'}}> Edit </Text></Button>
                                 </View>
                                 <View style={{width: width*0.5, height: height*0.1,alignItems:'center',justifyContent:'center'}} >
                                     <Button onPress={()=> this.deleteLaw(obj._id)} style={{marginLeft:width*0.12,borderRadius:5}} success><Text style={{paddingHorizontal:15,paddingVertical : 10,color:'#fff'}}> Delete </Text></Button>

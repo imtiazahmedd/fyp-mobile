@@ -34,6 +34,7 @@ class EditCivilLaws extends Component{
                 let res = await updateCivil(id, {arrest_warrant: arrest_warrant, bailable: bailable,compoundable : compoundable, description: description,offences : offences, punishment: punishment,section_no: section_no  });
                 this.setState({arrest_warrant: '',bailable:'',compoundable:'',description: '',offences:'',punishment: '', section_no : ''});
                 Alert.alert('', section_no + ' # updated sucessfully');
+                this.props.navigation.state.params.func();
                 this.props.navigation.navigate('Civil')
             } catch(e) {
                 Alert.alert('','Error' + e);
