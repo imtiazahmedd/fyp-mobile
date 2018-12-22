@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
+import {View, Text, Dimensions, Image, TouchableOpacity,ScrollView, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Container, Header, Content, Textarea, Form } from "native-base";
 import {civilLawAdd} from '../../configs/Firebase'
 
@@ -95,9 +96,9 @@ class AddCivilLaws extends Component{
                         </View>
                     </View>
                 </View>
-                <Container>
-                    <Content padder>
-                        <Form>
+                <View style={{marginHorizontal : 20}}>
+                       <ScrollView showsVerticalScrollIndicator={false}>
+                           <Form>
                             <Text>Section No</Text>
                             <Textarea onChangeText = {(text)=> this.setState({section_no: text})} rowSpan={2} bordered placeholder="Section No" />
                             <Text>Offence</Text>
@@ -112,12 +113,15 @@ class AddCivilLaws extends Component{
                             <Textarea onChangeText = {(text)=> this.setState({punishment : text})} rowSpan={3} bordered placeholder="Punishment" />
                             <Text>Description</Text>
                             <Textarea onChangeText = {(text)=> this.setState({description: text})} rowSpan={4} bordered placeholder="Description" />
-                        </Form>
-                        <TouchableOpacity style={Styles.addLaw}  onPress={()=>{this.addCivilLaw()}}>
+                               </Form>
+                           <View style={{height:130,marginTop:15}}>
+                          <TouchableOpacity style={Styles.addLaw}  onPress={()=>{this.addCivilLaw()}}>
                           <Text style={Styles.addLawText}>Add</Text>
                         </TouchableOpacity>
-                    </Content>
-                </Container>
+                           </View>
+                        </ScrollView>
+                    </View>
+
             </View>
         )
     }

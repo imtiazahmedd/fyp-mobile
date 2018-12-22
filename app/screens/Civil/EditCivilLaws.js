@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Dimensions, Image, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
+import {View, Text, Dimensions, Image,ScrollView, TouchableOpacity, TextInput, Alert, StyleSheet, ActivityIndicator,AsyncStorage} from 'react-native'
 const {width, height} = Dimensions.get('window');
 import Styles from './Styles'
 import { Container, Header, Content, Textarea, Form } from "native-base";
@@ -57,8 +57,8 @@ class EditCivilLaws extends Component{
                         </View>
                     </View>
                 </View>
-                <Container>
-                    <Content padder>
+                <View style={{marginHorizontal : 20}}>
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         <Form>
                             <Text>Section No</Text>
                             <Textarea value={this.state.section_no} onChangeText = {(text)=> this.setState({section_no: text})} rowSpan={2} bordered placeholder="Section No" />
@@ -75,11 +75,13 @@ class EditCivilLaws extends Component{
                             <Text>Description</Text>
                             <Textarea value={this.state.description} onChangeText = {(text)=> this.setState({description: text})} rowSpan={4} bordered placeholder="Description" />
                         </Form>
+                        <View style={{height:130,marginTop:15}}>
                         <TouchableOpacity style={Styles.addLaw}  onPress={()=>{this.updateCivilLaw()}}>
                             <Text style={Styles.addLawText}>update</Text>
                         </TouchableOpacity>
-                    </Content>
-                </Container>
+                            </View>
+                        </ScrollView>
+                </View>
             </View>
         )
     }

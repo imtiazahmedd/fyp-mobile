@@ -64,7 +64,7 @@ class Criminal extends Component{
                         <View style={{flexDirection:'row', flexWrap : 'wrap'}}>
                             <Text style={Styles.headingText}>Criminal laws</Text>
                             {user.isAdmin && <TouchableOpacity onPress={()=>{ this.props.navigation.navigate("AddCriminalLaws", {lawAdded : this.lawAdded})}}>
-                                <Image source={require('../../images/add.png')} style={Styles.headerImg2}/>
+                                <Image source={require('../../images/plus.png')} style={Styles.headerImg2}/>
                             </TouchableOpacity>}
                         </View>
                     </View>

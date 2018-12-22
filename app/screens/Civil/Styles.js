@@ -5,8 +5,7 @@ const {width, height} = Dimensions.get('window');
 
 const Styles={
     main:{
-        width: width,
-        height:height
+       flex: 1
     },
     header:{
         height: height*0.1,
@@ -46,12 +45,10 @@ const Styles={
         flexWrap:'wrap'
     },
     addLaw:{
-        width: width* 0.7,
+        width: width* 0.89,
         height: height*0.07,
         borderRadius:7,
-        marginTop:height* 0.05,
         marginBottom : height*0.08,
-        marginLeft:width*0.15,
         backgroundColor: '#127c7e',
         justifyContent:'center',
         fontFamily: 'gt-walsheim-regular',
