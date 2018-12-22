@@ -25,6 +25,7 @@ const Styles = {
         fontSize:18,
         marginLeft: width* 0.25,
         marginTop:height*0.03,
+        fontFamily: 'gt-walsheim-regular',
         color:'#fff'
     }
 

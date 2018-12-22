@@ -5,7 +5,7 @@ const {width, height} = Dimensions.get('window');
 const Styles = {
     main:{
         width: width,
-        height:height
+        height:height*0.9
     },
     header:{
         height: height*0.1,

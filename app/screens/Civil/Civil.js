@@ -48,7 +48,6 @@ class Civil extends Component{
         this.getCivilLaws()
     }
     render(){
-        console.log(this.state.lawAdded,'chalta he render state update pr')
         const {user} = this.state;
         return(
             <View style={Styles.main}>
@@ -72,10 +71,10 @@ class Civil extends Component{
                         <Header style={{backgroundColor:'lightgrey'}} searchBar rounded>
                             <Item>
                                 <Icon name="ios-search" />
-                                <Input onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />
+                                <Input style={{fontFamily: 'gt-walsheim-regular'}} onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />
                             </Item>
                             <Button transparent>
-                                <Text>Search</Text>
+                                <Text style={{fontFamily: 'gt-walsheim-regular'}}>Search</Text>
                             </Button>
                         </Header>
                     </Container>
@@ -89,7 +88,7 @@ class Civil extends Component{
                                 <Content>
                                     <Card>
                                         <CardItem>
-                                            <Text style={{margin:10}}>{el.offences}</Text>
+                                            <Text style={{margin:10, fontFamily: 'gt-walsheim-regular'}}>{el.offences}</Text>
                                         </CardItem>
                                     </Card>
                                 </Content>

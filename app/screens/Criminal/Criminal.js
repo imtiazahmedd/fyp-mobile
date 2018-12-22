@@ -75,10 +75,10 @@ class Criminal extends Component{
                         <Header style={{backgroundColor:'lightgrey'}} searchBar rounded>
                             <Item>
                                 <Icon name="ios-search" />
-                                <Input onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />
+                                <Input style={{fontFamily: 'gt-walsheim-regular'}} onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />
                             </Item>
                             <Button transparent>
-                                <Text>Search</Text>
+                                <Text style={{fontFamily: 'gt-walsheim-regular'}}>Search</Text>
                             </Button>
                         </Header>
                     </Container>
@@ -92,7 +92,7 @@ class Criminal extends Component{
                                     <Content>
                                         <Card>
                                             <CardItem>
-                                                <Text style={{margin:10}}>{el.offence}</Text>
+                                                <Text style={{margin:10, fontFamily: 'gt-walsheim-regular'}}>{el.offence}</Text>
 
                                             </CardItem>
                                         </Card>

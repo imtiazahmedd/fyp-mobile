@@ -85,6 +85,7 @@ const Styles = {
         width: width* 0.7,
         height: height*0.07,
         borderWidth:1.2,
+        fontFamily: 'gt-walsheim-regular',
         borderBottomColor:'grey',
         borderRightColor:'transparent',
         borderLeftColor:'transparent',

@@ -76,8 +76,11 @@ export default class Signup extends Component {
 
     render() {
         return (
+            <KeyboardAwareScrollView
+                innerRef={ref => {
+                 this.scroll = ref
+                    }}>
             <View style={Styles.main}>
-
                 <View style={Styles.header}>
                     <View style={Styles.headerSub}>
                         <TouchableOpacity onPress={()=> this.props.navigation.goBack()}>
@@ -130,7 +133,7 @@ export default class Signup extends Component {
                         </View>
                         <View style={{height: height*0.15,marginHorizontal:45, alignItems:'center'}}>
                             <TouchableOpacity style={this.state.role ? Styles.btn1 : Styles.btn} onPress={()=>{this.signup()}}>
-                                {this.state.loader ? <ActivityIndicator size="small" color="#00ff00" /> : (this.state.role ? <Text style={Styles.btnText}>Register User</Text> : <Text style={Styles.btnText}>Signup</Text>)}
+                                {this.state.loader ? <ActivityIndicator size="small" color="#0000ff" /> : (this.state.role ? <Text style={Styles.btnText}>Register User</Text> : <Text style={Styles.btnText}>Signup</Text>)}
                             </TouchableOpacity>
                         </View>
                         <View style={{height: height*0.03 ,marginHorizontal:45, alignItems:'center'}}>
@@ -143,6 +146,7 @@ export default class Signup extends Component {
 
 
             </View>
+            </KeyboardAwareScrollView>
         );
     }
 }
