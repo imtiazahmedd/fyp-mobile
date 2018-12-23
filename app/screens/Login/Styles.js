@@ -43,7 +43,6 @@ const Styles = {
         marginTop:height* 0.05,
         backgroundColor: '#127c7e',
         justifyContent:'center',
-        fontFamily: 'gt-walsheim-regular',
         alignItems:'center'
     },
     loginBtnText:{

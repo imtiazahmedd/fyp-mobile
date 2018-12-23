@@ -86,9 +86,9 @@ class Criminal extends Component{
                 <View style={{height:height*0.8,alignItems:'center', justifyContent:'center'}}>
                     {this.state.loader ? <ActivityIndicator size="large" color="#0000ff" /> : <View>
                     <ScrollView>
-                        {this.state[this.state.search ? 'searchArr' : 'criminalArr'].map((el)=>{
+                        {this.state[this.state.search ? 'searchArr' : 'criminalArr'].map((el,i)=>{
                             return (
-                                <TouchableOpacity  onPress={()=>{ this.props.navigation.navigate("CriminalDetail", {obj:el, lawAdded : this.lawAdded})}}>
+                                <TouchableOpacity key={i} onPress={()=>{ this.props.navigation.navigate("CriminalDetail", {obj:el, lawAdded : this.lawAdded})}}>
                                     <Content>
                                         <Card>
                                             <CardItem>
