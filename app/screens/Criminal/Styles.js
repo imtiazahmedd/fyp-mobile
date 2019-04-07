@@ -37,7 +37,8 @@ const Styles={
     headingText:{
         color:'#fff',
         fontFamily: 'gt-walsheim-regular',
-        fontSize:18
+        fontSize:18,
+        marginTop:height*0.008
     },
     headerCont:{
         flexDirection : 'row',
@@ -55,6 +56,9 @@ const Styles={
         fontFamily: 'gt-walsheim-regular',
         alignItems:'center'
     },
+    addLawText:{
+        color:'#fff'
+    }
 
 };
 export default Styles

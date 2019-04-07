@@ -60,7 +60,7 @@ class Civil extends Component{
                     <View style={Styles.headingDiv}>
                         <View style={{flexDirection:'row', flexWrap : 'wrap'}}>
                             <Text style={Styles.headingText}>Civil laws</Text>
-                            {user.isAdmin && <TouchableOpacity onPress={()=>{this.props.navigation.navigate("AddCivilLaws", {lawAdded : this.lawAdded})}}>
+                            {user && user.isAdmin && <TouchableOpacity onPress={()=>{this.props.navigation.navigate("AddCivilLaws", {lawAdded : this.lawAdded})}}>
                                 <Image source={require('../../images/plus.png')} style={Styles.headerImg2}/>
                             </TouchableOpacity>}
                         </View>
@@ -68,7 +68,7 @@ class Civil extends Component{
                 </View>
                 <View style={{height:height*0.1}}>
                     <Container>
-                        <Header style={{backgroundColor:'lightgrey'}} searchBar rounded>
+                        <Header style={{backgroundColor:'#fff'}} searchBar rounded>
                             <Item>
                                 <Icon name="ios-search" />
                                 <Input style={{fontFamily: 'gt-walsheim-regular'}} onChangeText = {(text)=>{this.checkSearch(text)}} placeholder="Search" />
@@ -80,7 +80,7 @@ class Civil extends Component{
                     </Container>
                 </View>
                 <View style={{height:height*0.8,alignItems:'center', justifyContent:'center'}}>
-                {this.state.loader ? <ActivityIndicator size="large" color="#0000ff" /> : <View>
+                {this.state.loader ? <ActivityIndicator size="large" color="#127c7e" /> : <View>
                     <ScrollView>
                     {this.state[this.state.search ? 'searchArr' : 'civilArr'].map((el,i)=>{
                         return (

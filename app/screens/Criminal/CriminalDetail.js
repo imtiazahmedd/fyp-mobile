@@ -92,7 +92,7 @@ class CriminalDetail extends Component{
                                     </CardItem>
                                 </Body>
                             </CardItem>
-                            {user.isAdmin && <View style={{flex: 1, flexDirection:'row' ,height:height*0.15,width:width}}>
+                            {user && user.isAdmin && <View style={{flex: 1, flexDirection:'row' ,height:height*0.15,width:width}}>
                                 <View style={{width: width*0.5, height: height*0.1,alignItems:'center',justifyContent:'center'}}>
                                     <Button onPress={()=>{ this.props.navigation.navigate("EditCriminalLaws",{obj : obj, func : this.props.navigation.state.params.lawAdded})}} style={{marginLeft:width*0.15,borderRadius:5}} primary><Text style={{paddingHorizontal:25,paddingVertical : 10,color:'#fff'}}> Edit </Text></Button>
                                 </View>
